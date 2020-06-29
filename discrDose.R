@@ -41,6 +41,8 @@ ED(modS,50,interval="delta",reference="control")
 #DL50 pour les différentes répétitions du clone résistant
 modR<-drm(dead/total~dose,weights=total,data=dataSR[dataSR$clone=="17-041-003",],
           fct=LN.3u(),curveid=date,type="binomial")
+modR<-drm(dead/total~dose,weights=total,data=dataSR[dataSR$clone=="17-041-003",],
+          fct=LN.3u(),type="binomial")
 plot(modR)
 ED(modR,50,interval="delta",reference="control")
 
@@ -49,4 +51,10 @@ ED(modR,50,interval="delta",reference="control")
 ED(modRS,97.5,interval="delta",reference="control")
 ED(modRS,95,interval="delta",reference="control")
 ED(modRS,19,interval="delta",reference="control")
+
+
+predict(modRS,data.frame(dose=5,CURVE=c("16-042","17-041-003"),se.fit=FALSE))
+
+ED(modR,97.5,interval="delta",reference="control")
+predict(modR,data.frame(dose=5,CURVE=c("17-041-003"),se.fit=FALSE))
 
