@@ -52,9 +52,10 @@ ED(modRS,97.5,interval="delta",reference="control")
 ED(modRS,95,interval="delta",reference="control")
 ED(modRS,19,interval="delta",reference="control")
 
-
+#le code suivant ne marche bizarement pas : il donne 2 fois le même % de mort
+#attendue....
 predict(modRS,data.frame(dose=5,CURVE=c("16-042","17-041-003"),se.fit=FALSE))
-
+#en attendant de voir ce qui se passe : 
 ED(modR,97.5,interval="delta",reference="control")
 predict(modR,data.frame(dose=5,CURVE=c("17-041-003"),se.fit=FALSE))
 
