@@ -27,8 +27,8 @@ dataSR<-dys[dys$clone %in% c("16-042","17-041-003"),]
 #in order to obtain the same results than with priprobit, the Finney equivalent
 #method, we have to remove the constrain on lowerlimit and chose a log-normal 
 #model instead of a log-logistic model
-modRS<-drm(dead/total~dose,weights=total,data=dataSR,fct=LN.3u(),curveid=clone,
-                  type="binomial")
+modRS<-drm(dead/total~dose,weights=total,data=dataSR,fct=LN.3u(),
+           curveid=clone,type="binomial")
 plot(modRS)
 ED(modRS,50,interval="delta",reference="control")
 
