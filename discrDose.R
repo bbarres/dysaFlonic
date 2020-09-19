@@ -62,6 +62,19 @@ ED(modR,97.5,interval="delta",reference="control")
 predict(modR,data.frame(dose=5,CURVE=c("17-041-003"),se.fit=FALSE))
 
 
+
+##############################################################################/
+#Writing info session for reproducibility####
+##############################################################################/
+
+sink("session_info.txt")
+print(sessioninfo::session_info())
+sink()
+#inspired by an R gist of François Briatte: 
+#https://gist.github.com/briatte/14e47fb0cfb8801f25c889edea3fcd9b
+
+
+
 ##############################################################################/
 #END
 ##############################################################################/
