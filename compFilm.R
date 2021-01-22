@@ -11,7 +11,11 @@ library(plotrix)
 #load the dataset
 dataSeal<-read.table("data/dys_comp_films.txt",header=TRUE,
                      sep=";",stringsAsFactors=TRUE)
+#removing the unnecessary columns
+dataSeal<-dataSeal[,c(1,2,4,6,18,19,20,21,22)]
 
+dataSeal<-aggregate(cbind(nb_vi,nb_mb,nb_mt,nb_mtot)~dose+ana_id+ech_id,
+                    data=dataSeal,"sum")
 
 ##############################################################################/
 #Regression analysis of mycelial growth experiment scoring 20 or 21 days####
