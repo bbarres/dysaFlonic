@@ -55,6 +55,7 @@ temp.m3<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
 plot(temp.m3,ylim=c(0,1.1),xlim=c(0,100),
      main="clear seal")
 compParm(temp.m3,"e")
+ED(temp.m3,50)
 
 tempdat<-dataSeal[dataSeal$ana_id==names(table(dataSeal$ana_id))[c(2,4)],]
 temp.m4<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
@@ -65,6 +66,7 @@ temp.m4<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
 plot(temp.m4,ylim=c(0,1.1),xlim=c(0,100),
      main="porous seal")
 compParm(temp.m4,"e")
+ED(temp.m4,50)
 
 
 ##############################################################################/
