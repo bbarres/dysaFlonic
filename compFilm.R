@@ -47,25 +47,41 @@ compParm(temp.m2,"e")
 ##############################################################################/
 
 tempdat<-dataSeal[dataSeal$ana_id==names(table(dataSeal$ana_id))[c(1,3)],]
-temp<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
+temp.m3<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
              weights=(nb_mtot+nb_vi),
              data=tempdat,
              curveid=ana_id,
              fct=LN.3u(),type="binomial")
-plot(temp,ylim=c(0,1.1),xlim=c(0,100),
+plot(temp.m3,ylim=c(0,1.1),xlim=c(0,100),
      main="clear seal")
-compParm(temp,"e")
+compParm(temp.m3,"e")
 
 tempdat<-dataSeal[dataSeal$ana_id==names(table(dataSeal$ana_id))[c(2,4)],]
-temp<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
+temp.m4<-drm(nb_mtot/(nb_mtot+nb_vi)~dose,
           weights=(nb_mtot+nb_vi),
           data=tempdat,
           curveid=ana_id,
           fct=LN.3u(),type="binomial")
-plot(temp,ylim=c(0,1.1),xlim=c(0,100),
+plot(temp.m4,ylim=c(0,1.1),xlim=c(0,100),
      main="porous seal")
-compParm(temp,"e")
+compParm(temp.m4,"e")
 
+
+##############################################################################/
+#combined plot of the different comparisons####
+##############################################################################/
+
+op<-par(mfrow=c(2,2))
+plot(temp.m1,ylim=c(0,1.1),xlim=c(0,100),
+     main=names(table(dataSeal$ech_id))[1])
+plot(temp.m2,ylim=c(0,1.1),xlim=c(0,100),
+     main=names(table(dataSeal$ech_id))[2])
+plot(temp.m3,ylim=c(0,1.1),xlim=c(0,100),
+     main="clear seal")
+plot(temp.m4,ylim=c(0,1.1),xlim=c(0,100),
+     main="porous seal")
+par(op)
+#export to .pdf 8 x 8 inches
 
 
 ##############################################################################/
