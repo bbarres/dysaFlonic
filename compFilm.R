@@ -18,7 +18,7 @@ dataSeal<-aggregate(cbind(nb_vi,nb_mb,nb_mt,nb_mtot)~dose+ana_id+ech_id,
                     data=dataSeal,"sum")
 
 ##############################################################################/
-#Regression analysis of mycelial growth experiment scoring 20 or 21 days####
+#Regression analysis with different type of sealing####
 ##############################################################################/
 
 tempdat<-dataSeal[dataSeal$ech_id==names(table(dataSeal$ech_id))[1],]
